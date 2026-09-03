@@ -1,0 +1,202 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #1f2937;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 42px;
+}
+
+.header p {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 17px;
+}
+
+.editor-container {
+  max-width: 950px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.code-input {
+  width: 100%;
+  min-height: 350px;
+  padding: 18px;
+  box-sizing: border-box;
+  font-family: Consolas, monospace;
+  font-size: 15px;
+  line-height: 1.5;
+  resize: vertical;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  outline: none;
+  background: #111827;
+  color: #f9fafb;
+}
+
+.code-input:focus {
+  border-color: #6b7280;
+}
+
+.controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.language-select {
+  padding: 11px 15px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  background: white;
+}
+
+.analyze-button {
+  padding: 11px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.analyze-button:hover {
+  background: #374151;
+}
+
+.results {
+  margin-top: 35px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 25px;
+}
+
+.results h2 {
+  margin-bottom: 20px;
+}
+
+.overall-analysis {
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+}
+
+.overall-analysis h3 {
+  margin-top: 0;
+}
+
+.overall-analysis p {
+  line-height: 1.5;
+}
+
+.issue-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  background: #fafafa;
+}
+
+.issue-card h3 {
+  margin-top: 0;
+}
+
+.issue-card p {
+  line-height: 1.5;
+}
+
+.issue-card a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.issue-card a:hover {
+  text-decoration: underline;
+}
+
+.verification {
+  margin-top: 30px;
+  padding: 25px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.verification h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.verification p {
+  line-height: 1.5;
+}
+
+.verification label {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 12px 0;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  line-height: 1.5;
+  background: #f9fafb;
+}
+
+.verification label:hover {
+  background: #f3f4f6;
+}
+
+.verification input {
+  margin-right: 10px;
+}
+
+.verify-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.verify-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.correct {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.incorrect {
+  margin-top: 15px;
+  font-weight: bold;
+}

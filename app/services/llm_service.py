@@ -2,18 +2,33 @@ import json
 import os
 
 from dotenv import load_dotenv
-from openai import OpenAI
+from google import genai
 
 load_dotenv()
 
-api_key = os.getenv("GROQ_API_KEY")
+api_key = os.getenv("GEMINI_API_KEY")
 
-print("GROQ API KEY FOUND:", bool(api_key))
+print("GEMINI API KEY FOUND:", bool(api_key))
 
-client = OpenAI(
-    api_key=api_key,
-    base_url="https://api.groq.com/openai/v1"
-)
+client = genai.Client(api_key=api_key)
+
+MODEL = "gemini-3.6-flash"
+
+
+def generate_response(prompt: str):
+    response = client.models.generate_content(
+        model=MODEL,
+        contents=prompt
+    )
+
+    text = response.text.strip()
+
+    if text.startswith("```"):
+        text = text.replace("```json", "", 1)
+        text = text.replace("```", "", 1)
+        text = text.strip()
+
+    return json.loads(text)
 
 
 def analyze_code_with_llm(
@@ -81,20 +96,9 @@ Rules:
 - Prefer official documentation as references.
 """
 
-    response = client.responses.create(
-        model="openai/gpt-oss-20b",
-        input=prompt
-    )
+    return generate_response(prompt)
 
-    text = response.output_text.strip()
 
-    # Remove Markdown code fences if the model adds them
-    if text.startswith("```"):
-        text = text.replace("```json", "", 1)
-        text = text.replace("```", "", 1)
-        text = text.strip()
-
-    return json.loads(text)
 def verify_answer(question: str, answer: str):
 
     prompt = f"""
@@ -127,16 +131,4 @@ Rules:
 - Feedback should explain briefly why the answer is correct, partially correct, or incorrect.
 """
 
-    response = client.responses.create(
-        model="openai/gpt-oss-20b",
-        input=prompt
-    )
-
-    text = response.output_text.strip()
-
-    if text.startswith("```"):
-        text = text.replace("```json", "", 1)
-        text = text.replace("```", "", 1)
-        text = text.strip()
-
-    return json.loads(text)
+    return generate_response(prompt)
